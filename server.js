@@ -21,13 +21,14 @@ const Event = require("./models/Event.js");
 
 // API to Get All Events
 app.get("/api/events", async (req, res) => {
-  try {
-    const events = await Event.find();
-    res.json(events);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+    try {
+      const events = await Event.find(); // Fetch events from DB
+      res.json(events || []);  // Ensure it always returns an array
+    } catch (error) {
+      res.status(500).json({ error: "Server error" });
+    }
+  });
+  
 
 // API to Add a New Event
 app.post("/api/events", async (req, res) => {
