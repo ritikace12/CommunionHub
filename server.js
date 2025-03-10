@@ -7,8 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => {
-    res.send("Backend is running! 🚀");
+    res.json({ message: "Backend is running! 🚀" });
   });
+  
   
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
